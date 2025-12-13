@@ -1,0 +1,651 @@
+[
+    {
+        "id": "tapa_01",
+        "nombre": "Pincho de tortilla",
+        "precio": 3.7,
+        "descripcion": "Con aderezo casero de mostaza y miel",
+        "ingredientes_deducidos": [
+            "huevo",
+            "patata",
+            "mostaza",
+            "miel"
+        ],
+        "alergenos": [
+            "Gluten",
+            "huevo"
+        ],
+        "maridaje_sugerido": "Estrella Galicia porque su sabor ligero complementa bien el aderezo de mostaza y miel."
+    },
+    {
+        "id": "tapa_02",
+        "nombre": "Tomates aliñados «El Monje»",
+        "precio": 6.0,
+        "descripcion": "Con nuestro aliño secreto",
+        "ingredientes_deducidos": [
+            "tomate",
+            "aliño secreto"
+        ],
+        "alergenos": [
+            "Mostaza",
+            "dióxido de azufre y sulfitos"
+        ],
+        "maridaje_sugerido": "Quíquere Rosado porque su frescura resalta el sabor del tomate."
+    },
+    {
+        "id": "tapa_03",
+        "nombre": "Chistorras al vino tinto",
+        "precio": 5.9,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "chistorra",
+            "vino tinto"
+        ],
+        "alergenos": [
+            "Sulfitos"
+        ],
+        "maridaje_sugerido": "Azpilicueta porque su robustez complementa el sabor de la chistorra."
+    },
+    {
+        "id": "tapa_04",
+        "nombre": "Papas arrugadas con mojo rojo",
+        "precio": 5.9,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "papas",
+            "mojo rojo"
+        ],
+        "alergenos": [
+            "Gluten",
+            "sulfitos",
+            "sésamo",
+            "soja"
+        ],
+        "maridaje_sugerido": "Dorada Especial porque su amargor equilibra el picante del mojo."
+    },
+    {
+        "id": "tapa_05",
+        "nombre": "Morcilla ibérica",
+        "precio": 8.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "morcilla",
+            "especias"
+        ],
+        "alergenos": [
+            "Soja",
+            "lácteos"
+        ],
+        "maridaje_sugerido": "Legaris Roble porque su cuerpo complementa la intensidad de la morcilla."
+    },
+    {
+        "id": "tapa_06",
+        "nombre": "Boquerones con mojo verde",
+        "precio": 6.8,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "boquerones",
+            "mojo verde"
+        ],
+        "alergenos": [
+            "Gluten",
+            "pescado",
+            "sulfitos",
+            "sésamo",
+            "soja"
+        ],
+        "maridaje_sugerido": "Quíquere Blanco porque su acidez complementa el sabor del pescado."
+    },
+    {
+        "id": "tapa_07",
+        "nombre": "Carpacho de pulpo",
+        "precio": 12.0,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "pulpo",
+            "aceite",
+            "especias"
+        ],
+        "alergenos": [
+            "Moluscos"
+        ],
+        "maridaje_sugerido": "Vidilla porque su frescura resalta el sabor del pulpo."
+    },
+    {
+        "id": "tapa_08",
+        "nombre": "Queso herreño a la plancha",
+        "precio": 10.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "queso herreño"
+        ],
+        "alergenos": [
+            "Gluten",
+            "lácteos",
+            "sulfitos",
+            "sésamo",
+            "soja"
+        ],
+        "maridaje_sugerido": "Gara porque su sabor suave complementa el queso."
+    },
+    {
+        "id": "tapa_09",
+        "nombre": "Croquetas variadas",
+        "precio": 7.3,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "masa de croqueta",
+            "relleno variado"
+        ],
+        "alergenos": [
+            "Gluten",
+            "huevo",
+            "lácteos",
+            "pescado",
+            "sulfitos"
+        ],
+        "maridaje_sugerido": "Estrella Galicia porque su ligereza equilibra la textura cremosa de las croquetas."
+    },
+    {
+        "id": "tapa_10",
+        "nombre": "Selección de quesos canarios",
+        "precio": 10.5,
+        "descripcion": "Pajonales / Lomo Gallego / Majorero",
+        "ingredientes_deducidos": [
+            "queso Pajonales",
+            "queso Lomo Gallego",
+            "queso Majorero"
+        ],
+        "alergenos": [
+            "Gluten",
+            "huevo",
+            "lácteos",
+            "pescado",
+            "sulfitos"
+        ],
+        "maridaje_sugerido": "Quíquere Blanco porque su acidez complementa la variedad de quesos."
+    },
+    {
+        "id": "tapa_11",
+        "nombre": "Almogrote rojo y verde",
+        "precio": 7.6,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "queso",
+            "pimientos",
+            "especias"
+        ],
+        "alergenos": [
+            "Gluten",
+            "lácteos",
+            "sésamo"
+        ],
+        "maridaje_sugerido": "1906 Reserva Especial porque su cuerpo complementa el sabor intenso del almogrote."
+    },
+    {
+        "id": "tapa_12",
+        "nombre": "Tabla mixta de quesos y almogrote",
+        "precio": 14.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "quesos variados",
+            "almogrote"
+        ],
+        "alergenos": [
+            "Gluten",
+            "lácteos",
+            "sésamo",
+            "frutos de cáscara"
+        ],
+        "maridaje_sugerido": "Quíquere Rosado porque su frescura equilibra la intensidad de los quesos y almogrote."
+    },
+    {
+        "id": "tapa_13",
+        "nombre": "Albóndigas",
+        "precio": 8.6,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "carne",
+            "salsa"
+        ],
+        "alergenos": [
+            "Gluten",
+            "sulfitos",
+            "soja"
+        ],
+        "maridaje_sugerido": "Valtravieso porque su robustez complementa el sabor de las albóndigas."
+    },
+    {
+        "id": "tapa_14",
+        "nombre": "Tabla de embutidos ibéricos",
+        "precio": 17.0,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "embutidos ibéricos"
+        ],
+        "alergenos": [
+            "lácteos",
+            "soja"
+        ],
+        "maridaje_sugerido": "Azpilicueta porque su estructura complementa la variedad de embutidos."
+    },
+    {
+        "id": "tapa_15",
+        "nombre": "Tomates con ventresca",
+        "precio": 10.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "tomates",
+            "ventresca"
+        ],
+        "alergenos": [
+            "Pescado"
+        ],
+        "maridaje_sugerido": "Quíquere Blanco porque su frescura resalta el sabor de la ventresca."
+    },
+    {
+        "id": "tapa_16",
+        "nombre": "Gazpacho",
+        "precio": 6.0,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "tomate",
+            "pepino",
+            "pimiento",
+            "ajo",
+            "aceite"
+        ],
+        "alergenos": [
+            "Gluten",
+            "huevo",
+            "sésamo",
+            "soja",
+            "sulfitos"
+        ],
+        "maridaje_sugerido": "Castillo de Miraflores porque su dulzura complementa la acidez del gazpacho."
+    },
+    {
+        "id": "tapa_17",
+        "nombre": "Cesta de pan",
+        "precio": 2.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "pan"
+        ],
+        "alergenos": [
+            "Gluten"
+        ],
+        "maridaje_sugerido": null
+    },
+    {
+        "id": "tapa_18",
+        "nombre": "Cesta de pan con alioli",
+        "precio": 3.2,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "pan",
+            "alioli"
+        ],
+        "alergenos": [
+            "Gluten",
+            "huevo"
+        ],
+        "maridaje_sugerido": null
+    },
+    {
+        "id": "tapa_19",
+        "nombre": "Chorizo de herradura (picante)",
+        "precio": 6.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "chorizo",
+            "especias"
+        ],
+        "alergenos": [],
+        "maridaje_sugerido": "1906 Red Vintage porque su cuerpo y notas especiadas complementan el chorizo picante."
+    },
+    {
+        "id": "tapa_20",
+        "nombre": "Espárragos de Navarra con Queso de Pajonales y virutas de ibérico",
+        "precio": 12.5,
+        "descripcion": "",
+        "ingredientes_deducidos": [
+            "espárragos",
+            "queso Pajonales",
+            "jamón ibérico"
+        ],
+        "alergenos": [
+            "Lácteos"
+        ],
+        "maridaje_sugerido": "Quíquere Blanco porque su acidez complementa los espárragos y el queso."
+    },
+    {
+        "id": "postre_01",
+        "nombre": "Tarta de zanahoria",
+        "precio": 4.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "zanahoria",
+            "harina",
+            "canela"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevo"
+        ],
+        "maridaje_sugerido": "Café con leche porque complementa la suavidad de la tarta"
+    },
+    {
+        "id": "postre_02",
+        "nombre": "Brownie",
+        "precio": 4.0,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "chocolate",
+            "harina",
+            "nueces"
+        ],
+        "alergenos": [
+            "Gluten",
+            "Huevo",
+            "Leche",
+            "Frutos de cascara",
+            "Cacahuetes",
+            "Soja"
+        ],
+        "maridaje_sugerido": "Café Bombón porque el dulce del café complementa el chocolate"
+    },
+    {
+        "id": "postre_03",
+        "nombre": "Brownie + helado",
+        "precio": 5.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "chocolate",
+            "harina",
+            "nueces",
+            "helado"
+        ],
+        "alergenos": [
+            "Gluten",
+            "Huevo",
+            "Leche",
+            "Frutos de cascara",
+            "Cacahuetes",
+            "Soja"
+        ],
+        "maridaje_sugerido": "Café Bombón porque el dulce del café complementa el chocolate"
+    },
+    {
+        "id": "postre_04",
+        "nombre": "Tarta de queso La Viña",
+        "precio": 4.3,
+        "descripcion": "Con base de queso Majorero",
+        "ingredientes_deducidos": [
+            "queso",
+            "harina"
+        ],
+        "alergenos": [
+            "Gluten",
+            "Huevo",
+            "Leche"
+        ],
+        "maridaje_sugerido": "Latte macchiato porque la leche complementa el queso"
+    },
+    {
+        "id": "postre_05",
+        "nombre": "Polvito Canario",
+        "precio": 4.0,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "harina",
+            "leche",
+            "nueces"
+        ],
+        "alergenos": [
+            "Gluten",
+            "Huevo",
+            "Leche",
+            "Frutos de cascara",
+            "Cacahuetes",
+            "Soja"
+        ],
+        "maridaje_sugerido": "Barraquito porque el licor complementa el dulce"
+    },
+    {
+        "id": "postre_06",
+        "nombre": "Red velvet",
+        "precio": 4.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "harina",
+            "cacao",
+            "queso crema"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevo"
+        ],
+        "maridaje_sugerido": "Capuccino porque la espuma complementa la textura del pastel"
+    },
+    {
+        "id": "postre_07",
+        "nombre": "Tarta de Santiago",
+        "precio": 3.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "almendras",
+            "harina"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevo",
+            "Frutos de cáscara",
+            "Almendras"
+        ],
+        "maridaje_sugerido": "Café Monje porque el Frangelico complementa las almendras"
+    },
+    {
+        "id": "postre_08",
+        "nombre": "Tiramisú",
+        "precio": 4.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "café",
+            "queso mascarpone",
+            "cacao"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Espreso porque el café realza el sabor del tiramisú"
+    },
+    {
+        "id": "postre_09",
+        "nombre": "Queque",
+        "precio": 2.5,
+        "descripcion": "Limón / chocolate o piña.",
+        "ingredientes_deducidos": [
+            "harina",
+            "limón",
+            "chocolate",
+            "piña"
+        ],
+        "alergenos": [
+            "Gluten",
+            "Huevo",
+            "Leche",
+            "Frutos de cáscara",
+            "Cacahuetes",
+            "Soja"
+        ],
+        "maridaje_sugerido": "Cortado porque el café complementa los sabores del queque"
+    },
+    {
+        "id": "postre_10",
+        "nombre": "Flan de huevo casero",
+        "precio": 3.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "huevo",
+            "leche",
+            "azúcar"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevo"
+        ],
+        "maridaje_sugerido": "Café Bombón porque el dulce del café complementa el flan"
+    },
+    {
+        "id": "postre_11",
+        "nombre": "Muerte por chocolate",
+        "precio": 4.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "chocolate",
+            "harina"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Soja",
+            "Frutos de cáscara",
+            "Cacahuetes"
+        ],
+        "maridaje_sugerido": "Irish coffe porque el whisky complementa el chocolate"
+    },
+    {
+        "id": "postre_12",
+        "nombre": "Strudel",
+        "precio": 4.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "manzana",
+            "canela",
+            "harina"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Blonde engel porque la canela complementa el strudel"
+    },
+    {
+        "id": "postre_13",
+        "nombre": "Strudel + helado",
+        "precio": 5.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "manzana",
+            "canela",
+            "harina",
+            "helado"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Blonde engel porque la canela complementa el strudel"
+    },
+    {
+        "id": "postre_14",
+        "nombre": "Cookie con Nutella + helado",
+        "precio": 5.0,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "harina",
+            "chocolate",
+            "avellanas",
+            "helado"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Café Bombón porque el dulce del café complementa la Nutella"
+    },
+    {
+        "id": "postre_15",
+        "nombre": "Coulant",
+        "precio": 3.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "chocolate",
+            "harina"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Espreso porque el café realza el sabor del chocolate"
+    },
+    {
+        "id": "postre_16",
+        "nombre": "Cookie con Nutella",
+        "precio": 3.5,
+        "descripcion": "(125 gr.)",
+        "ingredientes_deducidos": [
+            "harina",
+            "chocolate",
+            "avellanas"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Café Bombón porque el dulce del café complementa la Nutella"
+    },
+    {
+        "id": "postre_17",
+        "nombre": "Tarta de la Abuelita",
+        "precio": 3.5,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "harina",
+            "chocolate",
+            "nata"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Café Monje porque el Frangelico complementa el chocolate"
+    },
+    {
+        "id": "postre_18",
+        "nombre": "Coulant con helado",
+        "precio": 5.0,
+        "descripcion": null,
+        "ingredientes_deducidos": [
+            "chocolate",
+            "harina",
+            "helado"
+        ],
+        "alergenos": [
+            "Leche",
+            "Gluten",
+            "Huevos",
+            "Frutos secos"
+        ],
+        "maridaje_sugerido": "Espreso porque el café realza el sabor del chocolate"
+    }
+]

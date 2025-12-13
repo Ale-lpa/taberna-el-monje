@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#E0C097"       # Color Dorado/Beige para los botones e inputs
+backgroundColor = "transparent" # Transparente para ver el fondo
+secondaryBackgroundColor = "#2D0F15" # Fondo oscuro para la barra lateral
+textColor = "#FFFFFF"          # Texto base blanco
+font = "serif"                 # Fuente elegante
