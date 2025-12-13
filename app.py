@@ -27,9 +27,12 @@ st.markdown("""
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
-
-    /* 2. LIMPIEZA DE INTERFAZ */
+/* 2. LIMPIEZA TOTAL DE INTERFAZ */
     [data-testid="stHeader"] {background-color: rgba(0,0,0,0);}
+    
+    /* Ocultar menú de hamburguesa, barra superior y footer */
+    [data-testid="stToolbar"] {visibility: hidden !important;} /* Oculta botones de arriba a la derecha */
+    [data-testid="stDecoration"] {display: none;} /* Oculta la barrita de colores de arriba */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
@@ -175,4 +178,5 @@ if prompt := st.chat_input("Ej: ¿Las croquetas tienen lactosa?"):
             stream=True,
         )
         response = st.write_stream(stream)
+
     st.session_state.messages.append({"role": "assistant", "content": response})
