@@ -4,179 +4,252 @@ from openai import OpenAI
 
 # --- CONFIGURACIÓN DE PÁGINA ---
 st.set_page_config(
-    page_title="Taberna El Monje",
-    page_icon="🍷",
+    page_title="LocalMind | Asistente Políglota",
+    page_icon="🌍",
     layout="centered"
 )
 
-# --- 1. TU CLAVE DE OPENAI ---
-# ⚠️ IMPORTANTE: PEGA AQUÍ TU CLAVE
-# --- 1. TU CLAVE DE OPENAI (Usando Secretos) ---
-# En lugar de pegar la clave aquí, le decimos que la busque en la caja fuerte de la nube
-API_KEY = st.secrets["OPENAI_API_KEY"]
+# --- CLAVE API ---
+try:
+    API_KEY = st.secrets["OPENAI_API_KEY"]
+except:
+    st.error("⚠️ Falta la clave API en los Secrets.")
+    st.stop()
+
 client = OpenAI(api_key=API_KEY)
 
-# --- 2. ESTILOS CSS (ESTILO BODEGA PREMIUM) ---
+# --- ESTILOS CSS (DISEÑO LIMPIO Y CULTURAL) ---
 st.markdown("""
     <style>
-    /* 1. FONDO DE PANTALLA */
-    [data-testid="stAppViewContainer"] {
-        background-image: url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-/* 2. LIMPIEZA TOTAL DE INTERFAZ */
-    [data-testid="stHeader"] {background-color: rgba(0,0,0,0);}
-    
-    /* Ocultar menú de hamburguesa, barra superior y footer */
-    [data-testid="stToolbar"] {visibility: hidden !important;} /* Oculta botones de arriba a la derecha */
-    [data-testid="stDecoration"] {display: none;} /* Oculta la barrita de colores de arriba */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
 
-    /* 3. TÍTULOS */
-    .titulo-principal {
-        font-family: 'Garamond', serif;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 4rem;
-        font-weight: bold;
-        text-shadow: 0px 0px 10px rgba(0,0,0,0.8); /* Sombra brillante */
-        margin-top: 10px;
+    /* 1. FONDO */
+    [data-testid="stAppViewContainer"] {
+        background-color: #FAFAFA;
     }
-    .subtitulo {
+    
+    /* 2. TARJETA PRINCIPAL */
+    [data-testid="stMainBlockContainer"] {
+        background-color: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        max-width: 700px;
+    }
+
+    /* 3. TIPOGRAFÍA */
+    .brand-title {
+        font-family: 'Playfair Display', serif;
+        color: #1A1A1A;
         text-align: center;
-        color: #E0C097; /* Color Dorado suave */
-        font-style: italic;
-        font-size: 1.4rem;
-        text-shadow: 1px 1px 2px #000000;
+        font-size: 3rem;
+        margin-bottom: 5px;
+    }
+    .brand-subtitle {
+        font-family: 'Lato', sans-serif;
+        color: #666;
+        text-align: center;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
         margin-bottom: 30px;
     }
 
-    /* 4. CAJA DEL CHAT (CRISTAL AHUMADO) */
+    /* 4. CHAT BUBBLES */
     .stChatMessage {
-        background-color: rgba(20, 20, 20, 0.85); /* Negro casi opaco */
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 15px;
-        border: 1px solid #7F2A3C; /* Borde sutil vino */
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-
-    /* 5. TEXTOS DENTRO DEL CHAT */
-    .stChatMessage p, .stChatMessage li {
-        color: #F5F5F5 !important; /* Blanco hueso para leer bien */
-        font-size: 1.05rem;
-        line-height: 1.6;
-    }
-    .stChatMessage strong {
-        color: #FFD700 !important; /* Dorados para resaltar platos */
+        background-color: #F9F9F9;
+        border: none;
+        border-radius: 12px;
     }
     
-    /* Iconos del chat */
-    .stChatMessage .stAvatar {
-        border: 2px solid #E0C097;
+    /* 5. BOTÓN WHATSAPP (LLAMAR AL CAMARERO) */
+    a[href^="https://wa.me"] button {
+        background-color: #1A1A1A !important; /* Negro elegante */
+        color: white !important;
+        border: none !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
-    /* 6. BARRA LATERAL (VINO OSCURO) */
-    section[data-testid="stSidebar"] {
-        background-color: #2D0F15; /* Color vino muy oscuro */
-        border-right: 1px solid #5C1925;
-    }
-    /* Textos de la barra lateral en blanco/dorado */
-    section[data-testid="stSidebar"] h1, section[data-testid="stSidebar"] h2, section[data-testid="stSidebar"] h3 {
-        color: #E0C097 !important; /* Dorado */
-    }
-    section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] li, section[data-testid="stSidebar"] div, section[data-testid="stSidebar"] span {
-        color: #F0F0F0 !important; /* Blanco suave */
-    }
-    /* Cajas de info en sidebar (success, info, warning) */
-    .stAlert {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white !important;
-    }
+    /* OCULTAR HEADER STREAMLIT */
+    [data-testid="stHeader"], footer {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 
-# --- 3. CARGAR DATOS ---
-@st.cache_data
-def cargar_menu():
-    try:
-        with open('menu_maestro.json', 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError: return []
+# --- MENÚ (Base de Datos) ---
+MENU_DB = {
+    "Jamón Ibérico de Bellota": 22.00,
+    "Papas Arrugadas con Mojo": 8.50,
+    "Pulpo a la Gallega": 18.00,
+    "Paella de Marisco (p.p.)": 16.50,
+    "Gazpacho Andaluz": 7.50,
+    "Sangría (Jarra)": 12.00,
+    "Vino Tinto Rioja (Copa)": 4.50,
+    "Tarta de Queso Casera": 6.00,
+    "Crema Catalana": 5.50
+}
+menu_str = ", ".join([f"{k} ({v}€)" for k,v in MENU_DB.items()])
 
-menu_data = cargar_menu()
-menu_texto = json.dumps(menu_data, ensure_ascii=False)
+# --- ESTADO ---
+if "pedido" not in st.session_state: st.session_state.pedido = []
+if "mesa" not in st.session_state: st.session_state.mesa = "Mesa 1"
 
-# --- 4. BARRA LATERAL MEJORADA ---
+# --- FUNCIONES ---
+def agregar_item(nombre_plato):
+    precio = MENU_DB.get(nombre_plato, 0.0)
+    # Búsqueda difusa simple
+    if precio == 0.0:
+        for k, v in MENU_DB.items():
+            if k.lower() in nombre_plato.lower():
+                nombre_plato = k
+                precio = v
+                break
+    st.session_state.pedido.append({"item": nombre_plato, "precio": precio})
+    
+    # --- INSTRUCCIÓN PARA LA IA ---
+    # Aquí forzamos la "Magia Cultural": Explicar el plato.
+    return f"""
+    [SYSTEM]: Item '{nombre_plato}' added.
+    [INSTRUCTION]: 
+    1. Confirm in USER'S language.
+    2. Explain briefly what the dish is (cultural context) so they fall in love with it.
+    3. Suggest a drink pairing.
+    """
+
+def borrar_item(index):
+    st.session_state.pedido.pop(index)
+
+# --- TOOLS ---
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "agregar_al_pedido",
+            "description": "Anota un plato en la lista.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nombre_plato": {"type": "string", "description": "Nombre del plato"}
+                },
+                "required": ["nombre_plato"],
+            },
+        }
+    }
+]
+
+# --- SIDEBAR (Configuración) ---
 with st.sidebar:
-    st.markdown("<h1 style='text-align: center; margin-bottom: 10px;'>🍷 El Monje</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; font-size: 0.9rem; color: #aaa !important;'>Vegueta, Las Palmas</p>", unsafe_allow_html=True)
-    st.markdown("---")
-    
-    # SECCIÓN HORARIO VISUAL
-    st.markdown("### 🕒 Horario Apertura")
-    # Usamos columnas para que quede alineado perfecto
-    c1, c2 = st.columns([1, 2])
-    with c1:
-        st.markdown("**L - V**")
-        st.markdown("**Sáb**")
-        st.markdown("**Dom**")
-    with c2:
-        st.markdown("09:00 - 23:00")
-        st.markdown("10:00 - 00:00")
-        st.markdown("10:00 - 23:00")
+    st.write("🔧 Panel de Control")
+    if st.button("🗑️ Limpiar Sesión"):
+        st.session_state.pedido = []
+        st.session_state.messages = []
+        st.rerun()
 
-    st.markdown("---")
-    
-    # RESERVAS
-    st.markdown("### 📞 Reservas")
-    st.info("**928 31 01 85**")
-    
-    # NUEVO MENSAJE DE ALERGIAS
-    st.markdown("---")
-    st.warning("⚠️ **¿Alergias?**\nNo te la juegues. Pregúntame a mí por los ingredientes exactos (Gluten, Lactosa, etc).")
+# --- INTERFAZ PRINCIPAL ---
+st.markdown('<div class="brand-title">LocalMind</div>', unsafe_allow_html=True)
+st.markdown('<div class="brand-subtitle">Smart Menu Assistant</div>', unsafe_allow_html=True)
 
-# --- 5. LÓGICA DEL CHAT ---
+# --- VISOR DE PEDIDO (SIN PAGAR, SOLO LISTA) ---
+total = sum(p['precio'] for p in st.session_state.pedido)
+label = f"📝 TU CUENTA | {len(st.session_state.pedido)} items | {total:.2f}€"
+
+with st.expander(label, expanded=(len(st.session_state.pedido) > 0)):
+    # Selector de Mesa
+    st.session_state.mesa = st.selectbox("Ubicación:", [f"Mesa {i}" for i in range(1,21)], index=0)
+    
+    st.markdown("---")
+    
+    if not st.session_state.pedido:
+        st.caption("Pide recomendaciones al chat. Hablo +50 idiomas. 🌍")
+    else:
+        for i, p in enumerate(st.session_state.pedido):
+            c1, c2, c3 = st.columns([6, 2, 1])
+            c1.markdown(f"**{p['item']}**")
+            c2.markdown(f"{p['precio']:.2f}€")
+            c3.button("✖️", key=f"del_{i}", on_click=borrar_item, args=(i,))
+        
+        st.markdown("---")
+        
+        # EL "BOTÓN MÁGICO" (Sin cobrar, solo avisar)
+        items_str = "%0A".join([f"▪️ {p['item']}" for p in st.session_state.pedido])
+        msg = f"🔔 *NUEVO PEDIDO* 🔔%0A------------------%0A{items_str}%0A------------------%0A📍 *{st.session_state.mesa}*%0ATotal (A cobrar en mesa): {total:.2f}€"
+        link = f"https://wa.me/34600000000?text={msg}"
+        
+        st.link_button("🛎️ LLAMAR AL CAMARERO (Enviar Pedido)", link, use_container_width=True)
+
+# --- CEREBRO IA (MODO POLÍGLOTA EXTREMO) ---
 system_prompt = f"""
-Eres 'Monjito', el sumiller virtual de 'El Monje'.
-MENÚ: {menu_texto}
-REGLAS:
-1. Tu misión es vender y dar seguridad.
-2. Si preguntan por alergias, revisa el campo 'alergenos' y responde con precisión total.
-3. Usa negritas para resaltar platos y precios.
+Eres el "Sumiller Cultural" de este restaurante. 
+MENÚ: {menu_str}
+
+🌍 TUS 3 SUPERPODERES (OBLIGATORIOS):
+
+1. **POLÍGLOTA RADICAL:**
+   - Detecta AUTOMÁTICAMENTE el idioma: Chino (Mandarín/Cantonés), Ruso, Árabe, Japonés, Coreano, Hebreo, Alemán, Noruego, Sueco, etc.
+   - Responde SIEMPRE en ese idioma nativo.
+
+2. **GUÍA GASTRONÓMICO (Storytelling):**
+   - No solo tomes nota. **Vende el plato.**
+   - Si piden "Jamón", explica que es "Joya de España, curado por años".
+   - Si piden "Papas con Mojo", menciona que es el "Sabor volcánico de Canarias".
+   - Haz que se les haga la boca agua.
+
+3. **ASISTENTE, NO CAJERO:**
+   - Tu objetivo es crear la lista de deseos.
+   - Usa emojis elegantes (🍷, 🥘, ✨).
+   - Sé extremadamente educado y servicial.
+
+EJEMPLO RUSO:
+User: "Что такое gazpacho?"
+AI: "Гаспачо — это освежающий холодный андалузский суп из спелых томатов... 🍅 Идеально подходит для жаркого дня! Хотите попробовать?"
 """
 
-if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "assistant", "content": "¡Bienvenido a **El Monje**! 🍷\n\nSoy tu asistente personal. Puedes preguntarme por sugerencias, maridajes o consultar cualquier **alergia** con total confianza."}
-    ]
+if "messages" not in st.session_state or len(st.session_state.messages) == 0:
+    st.session_state.messages = [{"role": "system", "content": system_prompt}]
 
-# --- 6. INTERFAZ ---
-st.markdown('<div class="titulo-principal">Taberna El Monje</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitulo">Tradición y Sabor en Vegueta</div>', unsafe_allow_html=True)
+# Renderizar Chat
+for m in st.session_state.messages:
+    if m["role"] in ["assistant", "user"] and m.get("content"):
+        with st.chat_message(m["role"], avatar="🤵🏻" if m["role"] == "assistant" else "👤"):
+            st.markdown(m["content"])
 
-for message in st.session_state.messages:
-    if message["role"] != "system":
-        with st.chat_message(message["role"], avatar="🍷" if message["role"] == "assistant" else "👤"):
-            st.markdown(message["content"])
-
-if prompt := st.chat_input("Ej: ¿Las croquetas tienen lactosa?"):
+# Input Usuario
+if prompt := st.chat_input("Ask me anything / Pregúntame lo que quieras..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar="👤"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant", avatar="🍷"):
-        stream = client.chat.completions.create(
+    try:
+        response = client.chat.completions.create(
             model="gpt-4o",
-            messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
-            stream=True,
+            messages=st.session_state.messages,
+            tools=tools,
+            tool_choice="auto"
         )
-        response = st.write_stream(stream)
+        msg = response.choices[0].message
+        
+        # Procesar respuesta
+        msg_dict = {"role": msg.role, "content": msg.content}
+        
+        if msg.tool_calls:
+            msg_dict["tool_calls"] = [{"id": t.id, "type": t.type, "function": {"name": t.function.name, "arguments": t.function.arguments}} for t in msg.tool_calls]
+            st.session_state.messages.append(msg_dict)
+            
+            for tool in msg.tool_calls:
+                if tool.function.name == "agregar_al_pedido":
+                    args = json.loads(tool.function.arguments)
+                    res = agregar_item(args.get("nombre_plato"))
+                    st.session_state.messages.append({"role": "tool", "tool_call_id": tool.id, "content": res})
+            
+            # Segunda vuelta para la explicación cultural
+            final_res = client.chat.completions.create(model="gpt-4o", messages=st.session_state.messages)
+            st.session_state.messages.append({"role": "assistant", "content": final_res.choices[0].message.content})
+            st.rerun()
+        else:
+            st.session_state.messages.append(msg_dict)
+            st.rerun()
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    except Exception as e:
+        st.error(f"Error: {e}")
