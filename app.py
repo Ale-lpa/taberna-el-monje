@@ -1,13 +1,12 @@
 import streamlit as st
 from openai import OpenAI
 
-# ⛪ Configuración de la página
-st.set_page_config(page_title="El Monje - Asistente Virtual", page_icon="⛪", layout="centered")
+# 1. CONFIGURACIÓN DE PÁGINA
+st.set_page_config(page_title="El Monje | Powered by Localmind.", page_icon="⛪", layout="centered")
 
-# --- OPTIMIZACIÓN: Caché de Conexión ---
+# 2. CONEXIÓN OPTIMIZADA
 @st.cache_resource
 def get_openai_client():
-    # Asegúrate de tener la clave en secrets o cámbiala por tu clave directa para pruebas
     return OpenAI(api_key=st.secrets["OPENAI_API_KEY"].strip())
 
 try:
@@ -16,56 +15,75 @@ except Exception as e:
     st.error("Error de conexión con la abadía digital.")
     st.stop()
 
-# --- DISEÑO PREMIUM (Estilo Monasterio / Negro y Ámbar) ---
+# 3. DISEÑO PREMIUM (ESTILO MONASTERIO + BRANDING LOCALMIND)
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400&display=swap');
     
     .block-container { padding-top: 1.5rem !important; max-width: 500px; }
-    header {visibility: hidden !important;}
+    [data-testid="stHeader"], footer {visibility: hidden !important;}
     
     .stApp {
-        background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), 
+        background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), 
                     url('https://images.unsplash.com/photo-1544911835-296896207868?q=80&w=800&auto=format&fit=crop'); 
         background-size: cover;
     }
 
-    /* Cabecera */
+    /* BRANDING LOCALMIND */
+    .branding-container { text-align: center; padding-bottom: 15px; }
+    .powered-by { color: #FFBF00; font-size: 10px; letter-spacing: 3px; font-weight: bold; text-transform: uppercase; margin:0; opacity: 0.8; }
+    .localmind-logo { color: #fff; font-size: 20px; font-weight: 800; margin:0; font-family: sans-serif; }
+    .dot { color: #FFBF00; }
+
+    /* Cabecera El Monje */
     .header-monje { 
         text-align: center; border-bottom: 1px solid #FFBF00; 
-        margin-bottom: 20px; padding-bottom: 10px;
+        margin-bottom: 25px; padding-bottom: 10px;
     }
-    .header-monje h1 { font-family: 'Cinzel', serif; color: #FFBF00; font-size: 1.6rem; margin: 0; }
+    .header-monje h1 { font-family: 'Cinzel', serif; color: #FFBF00; font-size: 1.8rem; margin: 0; }
     .header-monje p { font-family: 'Poppins', sans-serif; color: #FFBF00; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.8; }
 
     /* Burbujas de Chat */
     .bubble-assistant { 
-        background: rgba(40, 40, 40, 0.8); border-left: 4px solid #FFBF00; 
-        padding: 15px; border-radius: 5px 15px 15px 15px; 
-        color: #F2EADA; font-family: 'Poppins', sans-serif; margin-bottom: 15px;
+        background: rgba(30, 30, 30, 0.9); border-left: 4px solid #FFBF00; 
+        padding: 18px; border-radius: 5px 15px 15px 15px; 
+        color: #F2EADA; font-family: 'Poppins', sans-serif; margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
     .bubble-user { 
         background: rgba(255, 191, 0, 0.1); border-right: 4px solid #FFBF00; 
         padding: 12px; border-radius: 15px 5px 15px 15px; 
         color: #FFBF00; text-align: right; font-family: 'Poppins', sans-serif; 
-        align-self: flex-end; margin-bottom: 15px;
+        margin-bottom: 20px;
     }
-    .label-monje { color: #FFBF00; font-weight: 700; font-size: 0.7rem; display: block; margin-bottom: 5px; }
-
-    .footer-brand { text-align: center; opacity: 0.4; font-size: 10px; color: white; margin-top: 20px; font-family: 'Poppins'; letter-spacing: 3px; }
+    .label-monje { color: #FFBF00; font-weight: 700; font-size: 0.75rem; display: block; margin-bottom: 8px; letter-spacing: 1px; }
     </style>
 
+    <div class="branding-container">
+        <p class="powered-by">Powered by</p>
+        <p class="localmind-logo">Localmind<span class="dot">.</span></p>
+    </div>
+
     <div class="header-monje">
-        <h1>⛪ EL ASISTENTE DEL MONJE ⛪</h1>
+        <h1>⛪ EL MONJE </h1>
         <p>SECRETOS Y TRADICIÓN CULINARIA</p>
     </div>
     """, unsafe_allow_html=True)
 
-# --- LÓGICA DE MENSAJES ---
+# 4. LÓGICA DE MENSAJES CON REGLA DE ORO
 if "monje_messages" not in st.session_state:
     st.session_state.monje_messages = [
-        {"role": "system", "content": "Eres el Monje, el sabio guardián de este restaurante. Tu tono es humilde, pausado y experto. Recomiendas platos caseros, vinos de la casa y postres tradicionales. Si preguntan por precios, sé elegante. No uses listas largas, habla como un consejero."},
-        {"role": "assistant", "content": "Bienvenidos a nuestra mesa. Soy el Monje, y estoy aquí para guiarles por los sabores de nuestra cocina. ¿En qué puedo servirles hoy?"}
+        {
+            "role": "system", 
+            "content": """Eres 'El Monje', el sabio guardián de este restaurante. 
+            TONO: Humilde, pausado, experto y místico. Hablas como un consejero culinario.
+            REGLAS DE ORO DE IDIOMA:
+            1. Detecta el idioma del usuario inmediatamente.
+            2. Responde ÚNICA Y EXCLUSIVAMENTE en ese idioma.
+            3. Prohibido mezclar idiomas. Si el usuario habla en inglés, no digas 'Hola'.
+            4. Recomienda platos caseros y vinos con elegancia, sin usar listas largas."""
+        },
+        {"role": "assistant", "content": "Bienvenidos a nuestra humilde mesa. Soy el Monje, y estoy aquí para guiarles por los senderos de nuestra cocina. ¿En qué puedo servirles hoy?"}
     ]
 
 # Mostrar historial
@@ -75,7 +93,7 @@ for m in st.session_state.monje_messages:
     elif m["role"] == "user":
         st.markdown(f'<div class="bubble-user">{m["content"]}</div>', unsafe_allow_html=True)
 
-# --- ENTRADA Y STREAMING ---
+# 5. ENTRADA Y STREAMING (GPT-4o-mini)
 if prompt := st.chat_input("Hable con el Monje..."):
     st.session_state.monje_messages.append({"role": "user", "content": prompt})
     st.markdown(f'<div class="bubble-user">{prompt}</div>', unsafe_allow_html=True)
@@ -85,7 +103,6 @@ if prompt := st.chat_input("Hable con el Monje..."):
         response_placeholder = st.empty()
         full_response = ""
         
-        # Llamada con Streaming para máxima velocidad visual
         stream = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.monje_messages],
@@ -102,5 +119,3 @@ if prompt := st.chat_input("Hable con el Monje..."):
         
     st.session_state.monje_messages.append({"role": "assistant", "content": full_response})
     st.rerun()
-
-st.markdown('<div class="footer-brand">LOCALMIND AI</div>', unsafe_allow_html=True)
